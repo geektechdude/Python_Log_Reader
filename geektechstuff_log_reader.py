@@ -54,6 +54,21 @@ def log_reader():
                 print(Style.RESET_ALL)
     return()
     
-log_reader()
+def log_reader_backwards():
+    # opens and reads file
+    with open(file_browse(), 'r') as filehandle:
+        filecontents = filehandle.readlines()
+        # ERROR Lines
+        for line in reversed(list(filecontents)):
+            if find_word("error",line) == True:
+                print(Fore.RED+line)
+                print(Style.RESET_ALL)
+            elif find_word("failed",line) == True:
+                print(Fore.YELLOW+line)
+                print(Style.RESET_ALL)
+            else:
+                print(Fore.BLUE+line)
+                print(Style.RESET_ALL)
+    return()
 
 
